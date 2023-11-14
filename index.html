@@ -42,7 +42,7 @@
         function showOptions(options) {
             let buttons = "";
             for (let i = 0; i < options.length; i++) {
-                buttons += `<button onclick="${options[i].toLowerCase().replace(/\s/g, '_')}()"> ${options[i]}</button>`;
+                buttons += `<button onclick="${options[i].toLowerCase()}()">${options[i]}</button>`;
             }
             document.getElementById('output').innerHTML += `<p>${buttons}</p>`;
         }
