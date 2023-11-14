@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCP Foundation Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>SCP Foundation Game</h1>
+    <p id="output">Welcome, Class-D personnel!</p>
+    <button onclick="startGame()">Start</button>
+
+    <script>
+        // Initial player data
+        let playerName;
+        let playerID;
+
+        // Function to start the game
+        function startGame() {
+            playerName = prompt("Enter your name:");
+            playerID = "D-" + (Math.floor(Math.random() * 10000)).toString().padStart(4, '0');
+            document.getElementById('output').innerHTML = `Welcome, ${playerName} (${playerID})! You find yourself in a dimly lit cell.`;
+            showOptions(["Continue"]);
+        }
+
+        // Function to display options and progress the game
+        function showOptions(options) {
+            let buttons = "";
+            for (let i = 0; i < options.length; i++) {
+                buttons += `<button onclick="${options[i].toLowerCase().replace(/\s/g, '_')}()"> ${options[i]}</button>`;
+            }
+            document.getElementById('output').innerHTML += `<p>${buttons}</p>`;
+        }
+
+        // Room 1: Containment Cell
+        function continue() {
+            document.getElementById('output').innerHTML += "<p>You decide to explore your surroundings.</p>";
+            showOptions(["Enter Room 2"]);
+        }
+
+        // Room 2: SCP-173's Containment Chamber
+        function enter_room_2() {
+            document.getElementById('output').innerHTML += "<p>As you enter Room 2, you notice SCP-173. It's eerily still.</p>";
+            showOptions(["Blink", "Run"]);
+        }
+
+        // Room 2.1: SCP-173 Hostile
+        function blink() {
+            document.getElementById('output').innerHTML += "<p>SCP-173 moves closer when you blink. It attacks!</p>";
+            endGame("You did not survive. Game Over.");
+        }
+
+        // Room 2.2: SCP-173 Neutral
+        function run() {
+            document.getElementById('output').innerHTML += "<p>You run out of the room, narrowly avoiding SCP-173.</p>";
+            showOptions(["Enter Room 3"]);
+        }
+
+        // Add more rooms and SCP encounters as needed...
+
+        // Function to end the game
+        function endGame(message) {
+            document.getElementById('output').innerHTML += `<p>${message}</p><p>Refresh the page to play again.</p>`;
+        }
+    </script>
+</body>
+</html>
