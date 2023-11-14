@@ -23,7 +23,7 @@
 <body>
     <h1>SCP Foundation Game</h1>
     <p id="output">Welcome, Class-D personnel!</p>
-    <button onclick="startGame()">Start</button>
+    <button id="startButton">Start</button>
 
     <script>
         // Initial player data
@@ -42,9 +42,14 @@
         function showOptions(options) {
             let buttons = "";
             for (let i = 0; i < options.length; i++) {
-                buttons += `<button onclick="${options[i].toLowerCase()}()">${options[i]}</button>`;
+                buttons += `<button id="${options[i].toLowerCase()}Button">${options[i]}</button>`;
             }
             document.getElementById('output').innerHTML += `<p>${buttons}</p>`;
+
+            // Add event listeners to the buttons
+            for (let i = 0; i < options.length; i++) {
+                document.getElementById(`${options[i].toLowerCase()}Button`).addEventListener('click', window[options[i].toLowerCase()]);
+            }
         }
 
         // Room 1: Containment Cell
@@ -77,6 +82,9 @@
         function endGame(message) {
             document.getElementById('output').innerHTML += `<p>${message}</p><p>Refresh the page to play again.</p>`;
         }
+
+        // Add an event listener to the start button
+        document.getElementById('startButton').addEventListener('click', startGame);
     </script>
 </body>
 </html>
