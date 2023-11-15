@@ -28,6 +28,7 @@ function showOptions(options) {
 
 // Room 1: Containment Cell
 function continueGame() {
+    console.log("Function called");  // Added this line for console check
     document.getElementById('output').innerHTML += "<p>You decide to explore your surroundings.</p>";
     showOptions(["Enter_Room_2"]);
 }
