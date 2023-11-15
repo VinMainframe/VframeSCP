@@ -1,2 +1,6 @@
 # VframeSCP
-Vin Frame represent SCP web game
+
+Currently Under development
+
+Vin Frame represents SCP web scripted game
+
